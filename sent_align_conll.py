@@ -36,6 +36,7 @@ def merge_sentences(sents, indices):
 
 # Writing new CoNLL file
 def write_conll(sentences, out_path):
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding='utf-8') as f:
         for sent in sentences:
             for token, label in sent:
@@ -78,4 +79,4 @@ if __name__ == "__main__":
     parser.add_argument("--out", required=True, help="Prefix for output files")
 
     args = parser.parse_args()
-    main(args.en, args.fr, args.out)
+    main(args.sl, args.tl, args.out)
